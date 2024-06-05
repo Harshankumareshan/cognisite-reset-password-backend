@@ -73,7 +73,7 @@ router.post('/forgot/password', async (req, res) => {
         user.resetPasswordTokenExpire = Date.now() + 30 * 60 * 1000; // 30 minutes
         await user.save();
 
-        const resetUrl = `http://localhost:5173/reset/password/${resetToken}`;
+        const resetUrl = `https://cognisitereset.netlify.app/reset/password/${resetToken}`;
         const message = `Your password reset URL is as follows:\n\n${resetUrl}\n\nIf you have not requested this email, then ignore it.`;
 
         const emailResult = await sendMail({ email: user.email, message });
